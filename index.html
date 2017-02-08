@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Pagination</title>
+	<script src="angular.min.js"></script>
+	<script src="controller.js"></script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="paginationCtrl">
+		<ul>
+			<li ng-repeat="x in arr | pagination: currentPage * pageSize | limitTo: pageSize"><span>{{x}}</span></li>
+		</ul>
+		<div ng-show="arr.length">
+			<button ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1">Prev</button>
+			<!-- <span>{{currentPage + 1}} of {{numberOfpages()}}</span> -->
+			<button ng-repeat="n in ret" ng-click="setPage($index)">{{n+1}}</button>
+			<button ng-disabled="currentPage >= arr.length/pageSize - 1" ng-click="currentPage = currentPage + 1">Next</button>
+		</div>
+	</div>
+</body>
+</html>
